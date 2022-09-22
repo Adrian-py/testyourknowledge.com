@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+:root {
+  --h1: 4.25125rem;
+  --h2: 2.625rem;
+  --h3: 1.61875rem;
+  --body: 1rem;
+  --secondary: 0.875rem;
+  --montserrat: "Montserrat", sans-serif;
+  --sourceSansPro: "Source Sans Pro", sans-serif;
+}
+
+:root {
+  --RichBlack: 13, 19, 33;
+  --PrussianBlue: 29, 45, 68;
+  --ShadowBlue: 116, 140, 171;
+  --FloralWhite: 249, 247, 240;
+}
+
+/*# sourceMappingURL=style.css.map */
