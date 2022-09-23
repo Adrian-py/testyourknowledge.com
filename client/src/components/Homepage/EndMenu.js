@@ -14,7 +14,7 @@ export default function EndMenu({
         className="end-menu__reset"
         onClick={() => handleGameProgression("Reset")}
       >
-        Reset
+        Try Again
       </button>
     </section>
   );

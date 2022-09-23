@@ -29,7 +29,6 @@ export default function QuestionMenu({
       <h1 className="question__title">Question {currentQuestionNumber}/10</h1>
       <p className="question__question">
         {he.decode(questionsList[currentQuestionNumber].question)}
-        {questionsList[currentQuestionNumber].correct_answer}
       </p>
 
       <div className="options">

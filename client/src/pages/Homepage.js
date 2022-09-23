@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import getQuestions from "../../helper/getQuestions";
+import getQuestions from "../helper/getQuestions";
 
-import StartMenu from "./StartMenu";
-import QuestionMenu from "./QuestionMenu";
-import EndMenu from "./EndMenu";
+import StartMenu from "../components/Homepage/StartMenu";
+import QuestionMenu from "../components/Homepage/QuestionMenu";
+import EndMenu from "../components/Homepage/EndMenu";
 
 const useHomepage = () => {
   const [questionsList, setQuestions] = useState([]);

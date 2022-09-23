@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 
 export default function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegisterUser = async (event) => {
+    event.preventDefault();
+    return await axios
+      .request({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        url: "http://localhost:5000/api/register",
+        data: { username, email, password },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.response.data));
+  };
+
   return (
     <section className="register">
       <h2 className="register__title">Register a new account</h2>
 
-      <form className="form">
+      <form className="form" onSubmit={handleRegisterUser}>
         <div className="name">
           <label className="name__label">Username</label>
           <input
             type="text"
             className="name__input"
             placeholder="Enter your username"
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
 
@@ -23,6 +44,7 @@ export default function Register() {
             type="email"
             className="name__input"
             placeholder="Enter your email"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -32,6 +54,7 @@ export default function Register() {
             type="password"
             className="passsword__input"
             placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
