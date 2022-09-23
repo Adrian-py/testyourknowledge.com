@@ -1,32 +1,31 @@
+// Packages imports
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+
+// Routes import
+const registerRoute = require("./routes/register.route");
 
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded());
 
+// Routes
+app.use("/api", registerRoute);
+
+// Mongoose connection
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established succesfully!");
-});
-
-app.post("/api/register", (req, res) => {
-  console.log(req.body);
-  res.json({ status: "ok" });
-});
-
-app.post("/api/login", (req, res) => {
-  console.log(req.body);
-  res.json({ status: "ok" });
 });
 
 app.listen(port, () => {
