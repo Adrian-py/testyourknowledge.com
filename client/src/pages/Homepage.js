@@ -11,6 +11,10 @@ import { useNavigate } from "react-router-dom";
 
 const useHomepage = () => {
   const [questionsList, setQuestions] = useState([]);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [gameEnded, setGameEnded] = useState(false);
+  const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(0);
+  const [numOfQuestionsAnswered, setNumOfQuestionsAnswered] = useState(0);
 
   const navigatePage = useNavigate();
 
@@ -40,15 +44,6 @@ const useHomepage = () => {
     }
   }, [navigatePage]);
 
-  return { questionsList };
-};
-
-export default function Homepage() {
-  const { questionsList } = useHomepage();
-  const [gameStarted, setGameStarted] = useState(false);
-  const [gameEnded, setGameEnded] = useState(false);
-  const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(0);
-
   const handleGameProgression = (nextEvent) => {
     switch (nextEvent) {
       case "Start":
@@ -60,15 +55,43 @@ export default function Homepage() {
         break;
 
       case "Reset":
+        fetchQuestions().then((returnedQuestions) => {
+          setQuestions([...returnedQuestions]);
+        });
         setGameStarted(false);
         setGameEnded(false);
         setNumOfCorrectAnswers(0);
+        setNumOfQuestionsAnswered(0);
         break;
 
       default:
         break;
     }
   };
+
+  return {
+    gameStarted,
+    gameEnded,
+    numOfCorrectAnswers,
+    setNumOfCorrectAnswers,
+    numOfQuestionsAnswered,
+    setNumOfQuestionsAnswered,
+    questionsList,
+    handleGameProgression,
+  };
+};
+
+export default function Homepage() {
+  const {
+    gameStarted,
+    gameEnded,
+    numOfCorrectAnswers,
+    setNumOfCorrectAnswers,
+    numOfQuestionsAnswered,
+    setNumOfQuestionsAnswered,
+    questionsList,
+    handleGameProgression,
+  } = useHomepage();
 
   return (
     <>
@@ -79,6 +102,7 @@ export default function Homepage() {
         ) : gameEnded ? (
           <EndMenu
             numOfCorrectAnswers={numOfCorrectAnswers}
+            numOfQuestionsAnswered={numOfQuestionsAnswered}
             handleGameProgression={handleGameProgression}
           />
         ) : (
@@ -86,6 +110,8 @@ export default function Homepage() {
             questionsList={questionsList}
             numOfCorrectAnswers={numOfCorrectAnswers}
             setNumOfCorrectAnswers={setNumOfCorrectAnswers}
+            numOfQuestionsAnswered={numOfQuestionsAnswered}
+            setNumOfQuestionsAnswered={setNumOfQuestionsAnswered}
             handleGameProgression={handleGameProgression}
           />
         )}

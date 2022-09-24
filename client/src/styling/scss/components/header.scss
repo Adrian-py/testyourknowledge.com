@@ -21,6 +21,10 @@ header {
     font-size: 1.25rem;
   }
 
+  &__username {
+    font-weight: bold;
+  }
+
   &__button {
     padding: 1vh 2vw;
     font-family: var(--montserrat);

@@ -16,6 +16,9 @@ html {
 }
 
 .App {
-  min-height: 100vh;
+  height: 100vh;
   padding: 0 5vw;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }

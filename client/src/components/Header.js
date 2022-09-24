@@ -28,7 +28,9 @@ export default function Header() {
     <header>
       <h1 className="title">testyournkowledge.com</h1>
       <div className="logout">
-        <p className="logout__text">Hi, {username}</p>
+        <p className="logout__text">
+          Hi, <span className="logout__username">{username}</span>
+        </p>
         <button className="logout__button" onClick={handleLogoutUser}>
           Logout
         </button>
