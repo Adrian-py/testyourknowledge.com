@@ -34,41 +34,46 @@ export default function Register() {
       <h2 className="register__title">Register a new account</h2>
 
       <form className="form" onSubmit={handleRegisterUser}>
-        <div className="name">
-          <label className="name__label">Username</label>
+        <div className="field field--name">
+          <label className="field__label">Username</label>
           <input
             type="text"
-            className="name__input"
+            className="field__input"
             placeholder="Enter your username"
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
 
-        <div className="email">
-          <label className="email__label">Email</label>
+        <div className="field field--email">
+          <label className="field__label">Email</label>
           <input
             type="email"
-            className="name__input"
+            className="field__input"
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        <div className="password">
-          <label className="password__label">Password</label>
+        <div className="field field--password">
+          <label className="field__label">Password</label>
           <input
             type="password"
-            className="passsword__input"
+            className="field__input"
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <button type="submit">Register</button>
+        <button type="submit" className="form__button">
+          Register
+        </button>
       </form>
 
-      <p>
-        Already have an account? <Link to="/login">Login here!</Link>
+      <p className="register__login">
+        Already have an account?{" "}
+        <Link to="/login" className="register__link">
+          Login here!
+        </Link>
       </p>
     </section>
   );

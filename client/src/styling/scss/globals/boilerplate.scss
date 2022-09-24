@@ -8,3 +8,14 @@ html,
 body {
   min-height: 100%;
 }
+
+html {
+  font-family: var(--montserrat);
+  background: rgba(var(--RichBlack));
+  color: rgba(var(--FloralWhite));
+}
+
+.App {
+  min-height: 100vh;
+  padding: 0 5vw;
+}

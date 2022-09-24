@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 
 import getQuestions from "../helper/getQuestions";
 
+import Header from "../components/Header";
 import StartMenu from "../components/Homepage/StartMenu";
 import QuestionMenu from "../components/Homepage/QuestionMenu";
 import EndMenu from "../components/Homepage/EndMenu";
@@ -21,7 +22,7 @@ const useHomepage = () => {
   // Check if user is logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
+
     if (token) {
       const user = jwt_decode(token);
 
@@ -70,22 +71,25 @@ export default function Homepage() {
   };
 
   return (
-    <section className="homepage">
-      {!gameStarted ? (
-        <StartMenu handleGameProgression={handleGameProgression} />
-      ) : gameEnded ? (
-        <EndMenu
-          numOfCorrectAnswers={numOfCorrectAnswers}
-          handleGameProgression={handleGameProgression}
-        />
-      ) : (
-        <QuestionMenu
-          questionsList={questionsList}
-          numOfCorrectAnswers={numOfCorrectAnswers}
-          setNumOfCorrectAnswers={setNumOfCorrectAnswers}
-          handleGameProgression={handleGameProgression}
-        />
-      )}
-    </section>
+    <>
+      <Header />
+      <section className="homepage">
+        {!gameStarted ? (
+          <StartMenu handleGameProgression={handleGameProgression} />
+        ) : gameEnded ? (
+          <EndMenu
+            numOfCorrectAnswers={numOfCorrectAnswers}
+            handleGameProgression={handleGameProgression}
+          />
+        ) : (
+          <QuestionMenu
+            questionsList={questionsList}
+            numOfCorrectAnswers={numOfCorrectAnswers}
+            setNumOfCorrectAnswers={setNumOfCorrectAnswers}
+            handleGameProgression={handleGameProgression}
+          />
+        )}
+      </section>
+    </>
   );
 }

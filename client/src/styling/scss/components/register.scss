@@ -1,4 +1,4 @@
-.login {
+.register {
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -14,7 +14,7 @@
     font-size: 3.5rem;
   }
 
-  &__signup {
+  &__login {
     font-size: 1.25rem;
     color: rgba(var(--FloralWhite));
   }
@@ -36,6 +36,26 @@
   display: flex;
   flex-direction: column;
   gap: 4vh;
+
+  &__button {
+    width: fit-content;
+    margin-top: 4vh;
+    padding: 1vh 2vw;
+    align-self: center;
+    font-family: var(--monteserrat);
+    font-size: 1.5rem;
+    border: 1px solid rgba(var(--FloralWhite));
+    border-radius: 10px;
+    background: none;
+    color: rgba(var(--FloralWhite));
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(var(--RichBlack));
+      background: rgba(var(--FloralWhite));
+    }
+  }
 }
 
 .field {
@@ -57,25 +77,5 @@
     outline: none;
     border: none;
     border-bottom: 1px solid rgba(var(--FloralWhite));
-  }
-
-  &__button {
-    width: fit-content;
-    margin-top: 4vh;
-    padding: 1vh 2vw;
-    align-self: center;
-    font-family: var(--monteserrat);
-    font-size: 1.5rem;
-    border: 1px solid rgba(var(--FloralWhite));
-    border-radius: 10px;
-    background: none;
-    color: rgba(var(--FloralWhite));
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
-
-    &:hover {
-      color: rgba(var(--RichBlack));
-      background: rgba(var(--FloralWhite));
-    }
   }
 }

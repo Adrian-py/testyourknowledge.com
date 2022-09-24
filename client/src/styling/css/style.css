@@ -9,6 +9,17 @@ body {
   min-height: 100%;
 }
 
+html {
+  font-family: var(--montserrat);
+  background: rgba(var(--RichBlack));
+  color: rgba(var(--FloralWhite));
+}
+
+.App {
+  min-height: 100vh;
+  padding: 0 5vw;
+}
+
 :root {
   --h1: 4.25125rem;
   --h2: 2.625rem;
@@ -24,6 +35,192 @@ body {
   --PrussianBlue: 29, 45, 68;
   --ShadowBlue: 116, 140, 171;
   --FloralWhite: 249, 247, 240;
+}
+
+header {
+  width: 100%;
+  padding: 6vh 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  user-select: none;
+  cursor: pointer;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+.logout__text {
+  font-family: var(--sourceSansPro);
+  font-size: 1.25rem;
+}
+.logout__button {
+  padding: 1vh 2vw;
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  background: none;
+  border: 1px solid rgba(var(--FloralWhite));
+  border-radius: 10px;
+  color: rgba(var(--FloralWhite));
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+}
+.logout__button:hover {
+  background: rgba(var(--FloralWhite));
+  color: rgba(var(--RichBlack));
+}
+
+.login {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  min-width: 50vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.login__title {
+  margin-bottom: 8vh;
+  font-size: 3.5rem;
+}
+.login__signup {
+  font-size: 1.25rem;
+  color: rgba(var(--FloralWhite));
+}
+.login__link {
+  font-weight: bold;
+  color: rgba(var(--FloralWhite));
+  transition: all 150ms ease-in-out;
+}
+.login__link:hover {
+  color: rgba(var(--ShadowBlue));
+}
+
+.form {
+  width: 100%;
+  margin-bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.field__label {
+  font-size: 1.5rem;
+}
+.field__input {
+  padding: 1.5vh 1vw;
+  font-family: var(--sourceSansPro);
+  font-size: 1.25rem;
+  color: rgba(var(--FloralWhite));
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(var(--FloralWhite));
+}
+.field__button {
+  width: fit-content;
+  margin-top: 4vh;
+  padding: 1vh 2vw;
+  align-self: center;
+  font-family: var(--monteserrat);
+  font-size: 1.5rem;
+  border: 1px solid rgba(var(--FloralWhite));
+  border-radius: 10px;
+  background: none;
+  color: rgba(var(--FloralWhite));
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+.field__button:hover {
+  color: rgba(var(--RichBlack));
+  background: rgba(var(--FloralWhite));
+}
+
+.register {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  min-width: 50vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.register__title {
+  margin-bottom: 8vh;
+  font-size: 3.5rem;
+}
+.register__login {
+  font-size: 1.25rem;
+  color: rgba(var(--FloralWhite));
+}
+.register__link {
+  font-weight: bold;
+  color: rgba(var(--FloralWhite));
+  transition: all 150ms ease-in-out;
+}
+.register__link:hover {
+  color: rgba(var(--ShadowBlue));
+}
+
+.form {
+  width: 100%;
+  margin-bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+.form__button {
+  width: fit-content;
+  margin-top: 4vh;
+  padding: 1vh 2vw;
+  align-self: center;
+  font-family: var(--monteserrat);
+  font-size: 1.5rem;
+  border: 1px solid rgba(var(--FloralWhite));
+  border-radius: 10px;
+  background: none;
+  color: rgba(var(--FloralWhite));
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+.form__button:hover {
+  color: rgba(var(--RichBlack));
+  background: rgba(var(--FloralWhite));
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.field__label {
+  font-size: 1.5rem;
+}
+.field__input {
+  padding: 1.5vh 1vw;
+  font-family: var(--sourceSansPro);
+  font-size: 1.25rem;
+  color: rgba(var(--FloralWhite));
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(var(--FloralWhite));
 }
 
 /*# sourceMappingURL=style.css.map */

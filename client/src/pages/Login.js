@@ -28,34 +28,39 @@ export default function Login() {
 
   return (
     <section className="login" onSubmit={handleLoginUser}>
-      <h2 className="login__title">Login to your account</h2>
+      <h1 className="login__title">Login to your account</h1>
 
       <form className="form">
-        <div className="email">
-          <label className="email__label">Email</label>
+        <div className="field field--email">
+          <label className="field__label">Email</label>
           <input
             type="email"
-            className="email__input"
+            className="field__input"
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        <div className="password">
-          <label className="password__label">Password</label>
+        <div className="field field--password">
+          <label className="field__label">Password</label>
           <input
             type="password"
-            className="passsword__input"
+            className="field__input"
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit" className="form__button">
+          Login
+        </button>
       </form>
 
-      <p>
-        Don't have an account yet? <Link to="/register">Sign up here!</Link>
+      <p className="login__signup">
+        Don't have an account yet?{" "}
+        <Link to="/register" className="login__link">
+          Sign up here!
+        </Link>
       </p>
     </section>
   );
