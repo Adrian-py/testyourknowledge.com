@@ -7,7 +7,6 @@ const route = express.Router();
 const { User } = require("../models/user.model.js");
 
 route.post("/", async (req, res) => {
-  console.log(req.body);
   const user = await User.findOne({
     email: req.body.email,
     password: req.body.password,

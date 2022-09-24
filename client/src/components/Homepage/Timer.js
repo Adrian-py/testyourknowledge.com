@@ -1,24 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export default function Timer({ handleGameProgression }) {
-  const [timeLeft, setTimeLeft] = useState(120);
-
-  // Start and check timer
-  useEffect(() => {
-    if (!timeLeft) {
-      handleGameProgression("End");
-      return;
-    }
-
-    const timeInterval = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-
-    return () => {
-      clearInterval(timeInterval);
-    };
-  }, [timeLeft, setTimeLeft, handleGameProgression]);
-
+export default function Timer({ timeLeft }) {
   return (
     <div className="timer">
       <p className="timer__text">Time Left:</p>

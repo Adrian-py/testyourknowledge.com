@@ -15,9 +15,9 @@ export default function EndMenu({
         You were able to do{" "}
         <span className="bold answered">
           {numOfQuestionsAnswered} questions
-        </span>{" "}
-        and got <span className="bold correct">{numOfCorrectAnswers}</span>{" "}
-        correct! and{" "}
+        </span>
+        , got <span className="bold correct">{numOfCorrectAnswers}</span>{" "}
+        correct and{" "}
         <span className="bold incorrect">{10 - numOfCorrectAnswers}</span>{" "}
         incorret!
       </p>

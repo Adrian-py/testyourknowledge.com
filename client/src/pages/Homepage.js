@@ -5,16 +5,19 @@ import getQuestions from "../helper/getQuestions";
 
 import Header from "../components/Header";
 import StartMenu from "../components/Homepage/StartMenu";
-import Timer from "../components/Homepage/Timer";
 import QuestionMenu from "../components/Homepage/QuestionMenu";
 import EndMenu from "../components/Homepage/EndMenu";
 import Loader from "../components/Homepage/Loader";
 
 import { useNavigate } from "react-router-dom";
+import {
+  handleDeletingGameInfo,
+  handleRetrievingGameInfo,
+} from "../helper/resumeGame";
 
 const useHomepage = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [questionsList, setQuestions] = useState([]);
+  const [questionsList, setQuestionsList] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
   const [numOfCorrectAnswers, setNumOfCorrectAnswers] = useState(0);
@@ -39,8 +42,13 @@ const useHomepage = () => {
         localStorage.removeItem("token");
         navigatePage("/login");
       } else {
+        if (handleRetrievingGameInfo()) {
+          setIsLoading(false);
+          return;
+        }
+
         fetchQuestions().then((returnedQuestions) => {
-          setQuestions(returnedQuestions);
+          setQuestionsList(returnedQuestions);
           setIsLoading(false);
         });
       }
@@ -58,12 +66,13 @@ const useHomepage = () => {
         break;
 
       case "End":
+        handleDeletingGameInfo();
         setGameEnded(true);
         break;
 
       case "Reset":
         fetchQuestions().then((returnedQuestions) => {
-          setQuestions([...returnedQuestions]);
+          setQuestionsList([...returnedQuestions]);
           setIsLoading(false);
         });
         setGameStarted(false);
@@ -76,6 +85,16 @@ const useHomepage = () => {
         break;
     }
   };
+
+  // Check if there is previous game
+  useEffect(() => {
+    const previousGameInfo = JSON.parse(handleRetrievingGameInfo());
+
+    if (previousGameInfo) {
+      setQuestionsList(previousGameInfo.questionsList);
+      setNumOfCorrectAnswers(previousGameInfo.numOfCorrectAnswers);
+    }
+  }, []);
 
   return {
     isLoading,
@@ -117,17 +136,14 @@ export default function Homepage() {
             handleGameProgression={handleGameProgression}
           />
         ) : (
-          <>
-            <Timer handleGameProgression={handleGameProgression} />
-            <QuestionMenu
-              questionsList={questionsList}
-              numOfCorrectAnswers={numOfCorrectAnswers}
-              setNumOfCorrectAnswers={setNumOfCorrectAnswers}
-              numOfQuestionsAnswered={numOfQuestionsAnswered}
-              setNumOfQuestionsAnswered={setNumOfQuestionsAnswered}
-              handleGameProgression={handleGameProgression}
-            />
-          </>
+          <QuestionMenu
+            questionsList={questionsList}
+            numOfCorrectAnswers={numOfCorrectAnswers}
+            setNumOfCorrectAnswers={setNumOfCorrectAnswers}
+            numOfQuestionsAnswered={numOfQuestionsAnswered}
+            setNumOfQuestionsAnswered={setNumOfQuestionsAnswered}
+            handleGameProgression={handleGameProgression}
+          />
         )}
       </section>
     </>
