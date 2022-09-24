@@ -7,9 +7,12 @@ import Header from "../components/Header";
 import StartMenu from "../components/Homepage/StartMenu";
 import QuestionMenu from "../components/Homepage/QuestionMenu";
 import EndMenu from "../components/Homepage/EndMenu";
+import Loader from "../components/Homepage/Loader";
+
 import { useNavigate } from "react-router-dom";
 
 const useHomepage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [questionsList, setQuestions] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
@@ -20,6 +23,7 @@ const useHomepage = () => {
 
   // Fetch trivia questions
   const fetchQuestions = async () => {
+    setIsLoading(true);
     return await getQuestions();
   };
 
@@ -36,6 +40,7 @@ const useHomepage = () => {
       } else {
         fetchQuestions().then((returnedQuestions) => {
           setQuestions(returnedQuestions);
+          setIsLoading(false);
         });
       }
     } else {
@@ -44,6 +49,7 @@ const useHomepage = () => {
     }
   }, [navigatePage]);
 
+  // Function to move game stages
   const handleGameProgression = (nextEvent) => {
     switch (nextEvent) {
       case "Start":
@@ -57,6 +63,7 @@ const useHomepage = () => {
       case "Reset":
         fetchQuestions().then((returnedQuestions) => {
           setQuestions([...returnedQuestions]);
+          setIsLoading(false);
         });
         setGameStarted(false);
         setGameEnded(false);
@@ -70,6 +77,7 @@ const useHomepage = () => {
   };
 
   return {
+    isLoading,
     gameStarted,
     gameEnded,
     numOfCorrectAnswers,
@@ -83,6 +91,7 @@ const useHomepage = () => {
 
 export default function Homepage() {
   const {
+    isLoading,
     gameStarted,
     gameEnded,
     numOfCorrectAnswers,
@@ -96,6 +105,7 @@ export default function Homepage() {
   return (
     <>
       <Header />
+      {isLoading ? <Loader /> : null}
       <section className="homepage">
         {!gameStarted ? (
           <StartMenu handleGameProgression={handleGameProgression} />

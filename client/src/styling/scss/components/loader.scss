@@ -1,0 +1,33 @@
+.loader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vh;
+  background: rgba(var(--RichBlack), 0.75);
+}
+
+.loader {
+  width: 30vw;
+  padding: 0.8vh 0.75vw;
+  display: flex;
+  justify-content: flex-start;
+  background: white;
+  border-radius: 10px;
+
+  &__text {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__bar {
+    height: 1rem;
+    background: rgba(var(--PrussianBlue));
+    border-radius: 6px;
+  }
+}
