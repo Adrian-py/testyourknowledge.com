@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 
 // Routes import
 const registerRoute = require("./routes/register.route");
+const loginRoute = require("./routes/login.route");
 
 require("dotenv").config();
 
@@ -17,7 +18,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api", registerRoute);
+app.use("/api/register", registerRoute);
+app.use("/api/login", loginRoute);
 
 // Mongoose connection
 const uri = process.env.MONGO_URI;

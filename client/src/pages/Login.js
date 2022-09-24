@@ -1,19 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginUser = async (event) => {
+    event.preventDefault();
+    return await axios
+      .request({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        url: "http://localhost:5000/api/login",
+        data: { email, password },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.response.data));
+  };
+
   return (
-    <section className="login">
+    <section className="login" onSubmit={handleLoginUser}>
       <h2 className="login__title">Login to your account</h2>
 
       <form className="form">
-        <div className="name">
-          <label className="name__label">Username</label>
+        <div className="email">
+          <label className="email__label">Email</label>
           <input
-            type="text"
-            className="name__input"
-            placeholder="Enter your username"
+            type="email"
+            className="email__input"
+            placeholder="Enter your email"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -23,6 +43,7 @@ export default function Login() {
             type="password"
             className="passsword__input"
             placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
