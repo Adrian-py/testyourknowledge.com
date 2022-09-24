@@ -1,3 +1,4 @@
+@use "../utils/breakpoints.scss" as *;
 .loader-container {
   position: absolute;
   top: 0;
@@ -10,6 +11,10 @@
   flex-direction: column;
   gap: 1vh;
   background: rgba(var(--RichBlack), 0.75);
+
+  @include breakpoint(phone) {
+    gap: 2vh;
+  }
 }
 
 .loader {
@@ -20,13 +25,18 @@
   background: white;
   border-radius: 10px;
 
+  @include breakpoint(phone) {
+    width: 60vw;
+    padding: 1vh 2.25vw;
+  }
+
   &__text {
     font-size: 1.5rem;
     font-weight: bold;
   }
 
   &__bar {
-    height: 1rem;
+    height: 0.75rem;
     background: rgba(var(--PrussianBlue));
     border-radius: 6px;
   }

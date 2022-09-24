@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <header>
-      <h1 className="title">testyournkowledge.com</h1>
+      <h1 className="title">testyourknowledge.com</h1>
       <div className="logout">
         <p className="logout__text">
           Hi, <span className="logout__username">{username}</span>

@@ -1,3 +1,5 @@
+@use "../utils/breakpoints.scss" as *;
+
 .timer {
   width: 100%;
   padding: 4vh 0;
@@ -7,14 +9,26 @@
   justify-content: flex-start;
   gap: 1vw;
 
+  @include breakpoint(phone) {
+    gap: 4vw;
+  }
+
   &__text {
     font-size: 1.5rem;
+
+    @include breakpoint(phone) {
+      font-size: 1.1rem;
+    }
   }
 
   &__time {
     font-size: 1.75rem;
     font-weight: bold;
     color: lightblue;
+
+    @include breakpoint(phone) {
+      font-size: 1.25rem;
+    }
   }
 }
 
@@ -25,21 +39,42 @@
   align-items: center;
   flex-direction: column;
 
+  @include breakpoint(phone) {
+    padding-bottom: 20vh;
+  }
+
   &__title {
-    font-size: 4rem;
     margin-bottom: 4vh;
+    font-size: 4rem;
+
+    @include breakpoint(phone) {
+      font-size: 2rem;
+    }
   }
 
   &__question {
     margin-bottom: 8vh;
     font-size: 1.75rem;
     text-align: center;
+
+    @include breakpoint(phone) {
+      font-size: 1rem;
+    }
   }
 }
 
 .options {
   display: flex;
   gap: 4vw;
+
+  @include breakpoint(tablet) {
+    gap: 8vw;
+  }
+
+  @include breakpoint(phone) {
+    width: 100%;
+    justify-content: space-evenly;
+  }
 
   &__option {
     padding: 2vh 4vw;
@@ -51,6 +86,17 @@
     color: rgba(var(--FloralWhite));
     transition: all 150ms ease-in-out;
     cursor: pointer;
+
+    @include breakpoint(tablet) {
+      padding: 2vh 8vw;
+      font-size: 2rem;
+    }
+
+    @include breakpoint(phone) {
+      width: 40%;
+      padding: 2vh 0;
+      font-size: 1.4rem;
+    }
 
     &:hover {
       background: rgba(var(--FloralWhite));

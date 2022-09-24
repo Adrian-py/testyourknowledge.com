@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+import getLoginStatus from "../helper/getLoginStatus";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -28,6 +30,10 @@ export default function Register() {
     }
     navigatePage("/login");
   };
+
+  useEffect(() => {
+    if (getLoginStatus()) navigatePage("/");
+  }, [navigatePage]);
 
   return (
     <section className="register">
@@ -58,6 +64,7 @@ export default function Register() {
           <label className="field__label">Password</label>
           <input
             type="password"
+            autoComplete="on"
             className="field__input"
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}

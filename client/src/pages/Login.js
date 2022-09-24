@@ -1,5 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import getLoginStatus from "../helper/getLoginStatus";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -26,6 +28,10 @@ export default function Login() {
     }
   };
 
+  useEffect(() => {
+    if (getLoginStatus()) navigatePage("/");
+  }, [navigatePage]);
+
   return (
     <section className="login" onSubmit={handleLoginUser}>
       <h1 className="login__title">Login to your account</h1>
@@ -45,6 +51,7 @@ export default function Login() {
           <label className="field__label">Password</label>
           <input
             type="password"
+            autoComplete="on"
             className="field__input"
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}

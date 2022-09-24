@@ -13,8 +13,13 @@ export default function EndMenu({
       </h2>
       <p className="end-menu__desc">
         You were able to do{" "}
-        <span className="bold">{numOfQuestionsAnswered}/10</span> and got{" "}
-        <span className="bold correct">{numOfCorrectAnswers}</span> correct!
+        <span className="bold answered">
+          {numOfQuestionsAnswered} questions
+        </span>{" "}
+        and got <span className="bold correct">{numOfCorrectAnswers}</span>{" "}
+        correct! and{" "}
+        <span className="bold incorrect">{10 - numOfCorrectAnswers}</span>{" "}
+        incorret!
       </p>
       <button
         className="end-menu__reset"

@@ -1,3 +1,5 @@
+@use "../utils/breakpoints.scss" as *;
+
 .register {
   position: absolute;
   left: 50%;
@@ -9,14 +11,46 @@
   align-items: flex-start;
   flex-direction: column;
 
+  @include breakpoint(tablet) {
+    min-width: 70vw;
+  }
+
+  @include breakpoint(phone) {
+    min-width: 80vw;
+  }
+
   &__title {
     margin-bottom: 8vh;
     font-size: 3.5rem;
+
+    @include breakpoint(SDesktop) {
+      font-size: 2.5rem;
+    }
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include breakpoint(phone) {
+      margin-bottom: 4vh;
+      font-size: 1.75rem;
+    }
   }
 
   &__login {
+    margin-top: 8vh;
     font-size: 1.25rem;
     color: rgba(var(--FloralWhite));
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include breakpoint(phone) {
+      font-size: 1rem;
+    }
   }
 
   &__link {
@@ -27,55 +61,5 @@
     &:hover {
       color: rgba(var(--ShadowBlue));
     }
-  }
-}
-
-.form {
-  width: 100%;
-  margin-bottom: 8vh;
-  display: flex;
-  flex-direction: column;
-  gap: 4vh;
-
-  &__button {
-    width: fit-content;
-    margin-top: 4vh;
-    padding: 1vh 2vw;
-    align-self: center;
-    font-family: var(--monteserrat);
-    font-size: 1.5rem;
-    border: 1px solid rgba(var(--FloralWhite));
-    border-radius: 10px;
-    background: none;
-    color: rgba(var(--FloralWhite));
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
-
-    &:hover {
-      color: rgba(var(--RichBlack));
-      background: rgba(var(--FloralWhite));
-    }
-  }
-}
-
-.field {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1vh;
-
-  &__label {
-    font-size: 1.5rem;
-  }
-
-  &__input {
-    padding: 1.5vh 1vw;
-    font-family: var(--sourceSansPro);
-    font-size: 1.25rem;
-    color: rgba(var(--FloralWhite));
-    background: none;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(var(--FloralWhite));
   }
 }

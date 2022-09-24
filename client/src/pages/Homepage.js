@@ -5,6 +5,7 @@ import getQuestions from "../helper/getQuestions";
 
 import Header from "../components/Header";
 import StartMenu from "../components/Homepage/StartMenu";
+import Timer from "../components/Homepage/Timer";
 import QuestionMenu from "../components/Homepage/QuestionMenu";
 import EndMenu from "../components/Homepage/EndMenu";
 import Loader from "../components/Homepage/Loader";
@@ -116,14 +117,17 @@ export default function Homepage() {
             handleGameProgression={handleGameProgression}
           />
         ) : (
-          <QuestionMenu
-            questionsList={questionsList}
-            numOfCorrectAnswers={numOfCorrectAnswers}
-            setNumOfCorrectAnswers={setNumOfCorrectAnswers}
-            numOfQuestionsAnswered={numOfQuestionsAnswered}
-            setNumOfQuestionsAnswered={setNumOfQuestionsAnswered}
-            handleGameProgression={handleGameProgression}
-          />
+          <>
+            <Timer handleGameProgression={handleGameProgression} />
+            <QuestionMenu
+              questionsList={questionsList}
+              numOfCorrectAnswers={numOfCorrectAnswers}
+              setNumOfCorrectAnswers={setNumOfCorrectAnswers}
+              numOfQuestionsAnswered={numOfQuestionsAnswered}
+              setNumOfQuestionsAnswered={setNumOfQuestionsAnswered}
+              handleGameProgression={handleGameProgression}
+            />
+          </>
         )}
       </section>
     </>

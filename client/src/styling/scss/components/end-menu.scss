@@ -1,3 +1,5 @@
+@use "../utils/breakpoints.scss" as *;
+
 .end-menu {
   padding-bottom: 12vh;
   display: flex;
@@ -6,14 +8,42 @@
   flex-direction: column;
 
   &__title {
-    font-size: 4rem;
     margin-bottom: 4vh;
+    font-size: 4rem;
+
+    @include breakpoint(SDesktop) {
+      font-size: 2.75rem;
+    }
+
+    @include breakpoint(tablet) {
+      margin-bottom: 3vh;
+      font-size: 2.25rem;
+      text-align: center;
+    }
+
+    @include breakpoint(phone) {
+      font-size: 2rem;
+    }
   }
 
   &__desc {
+    margin-bottom: 4vh;
     font-family: var(--sourceSansPro);
     font-size: 1.5rem;
-    margin-bottom: 4vh;
+
+    @include breakpoint(SDesktop) {
+      margin-bottom: 6vh;
+      font-size: 1.25rem;
+    }
+
+    @include breakpoint(tablet) {
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    @include breakpoint(phone) {
+      font-size: 1.1rem;
+    }
   }
 
   &__reset {
@@ -28,6 +58,10 @@
     transition: all 150ms ease-in-out;
     cursor: pointer;
 
+    @include breakpoint(phone) {
+      font-size: 1.25rem;
+    }
+
     &:hover {
       background: rgba(var(--FloralWhite));
       color: rgba(var(--RichBlack));
@@ -39,6 +73,14 @@
   font-weight: bold;
 }
 
+.answered {
+  color: lightblue;
+}
+
 .correct {
   color: lightgreen;
+}
+
+.incorrect {
+  color: rgb(255, 75, 75);
 }

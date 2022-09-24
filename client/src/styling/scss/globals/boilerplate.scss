@@ -11,7 +11,7 @@ body {
 
 html {
   font-family: var(--montserrat);
-  background: rgba(var(--RichBlack));
+  background: radial-gradient(rgba(var(--RichBlack)), rgb(16, 25, 44));
   color: rgba(var(--FloralWhite));
 }
 

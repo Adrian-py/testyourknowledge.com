@@ -1,14 +1,32 @@
+@use "../utils/breakpoints.scss" as *;
+
 header {
   width: 100%;
   padding: 6vh 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include breakpoint(phone) {
+    padding-bottom: 4vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+  }
 }
 
 .title {
   user-select: none;
   cursor: pointer;
+
+  @include breakpoint(tablet) {
+    font-size: 1.5rem;
+  }
+
+  @include breakpoint(phone) {
+    font-size: 1.25rem;
+  }
 }
 
 .logout {
@@ -16,9 +34,17 @@ header {
   align-items: center;
   gap: 2vw;
 
+  @include breakpoint(tablet) {
+    gap: 4vw;
+  }
+
   &__text {
     font-family: var(--sourceSansPro);
     font-size: 1.25rem;
+
+    @include breakpoint(phone) {
+      font-size: 1rem;
+    }
   }
 
   &__username {
@@ -35,6 +61,11 @@ header {
     color: rgba(var(--FloralWhite));
     transition: all 150ms ease-in-out;
     cursor: pointer;
+
+    @include breakpoint(phone) {
+      padding: 1vh 4vw;
+      font-size: 1rem;
+    }
 
     &:hover {
       background: rgba(var(--FloralWhite));

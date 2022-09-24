@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import he from "he";
 
@@ -50,30 +50,8 @@ export default function QuestionMenu({
     handleGameProgression,
   });
 
-  const [timeLeft, setTimeLeft] = useState(120);
-
-  // Start and check timer
-  useEffect(() => {
-    if (!timeLeft) {
-      handleGameProgression("End");
-      return;
-    }
-
-    const timeInterval = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-
-    return () => {
-      clearInterval(timeInterval);
-    };
-  }, [timeLeft, handleGameProgression]);
-
   return (
     <>
-      <div className="timer">
-        <p className="timer__text">Time Left:</p>
-        <p className="timer__time">{timeLeft}</p>
-      </div>
       <div className="question">
         <h1 className="question__title">
           Question {currentQuestionNumber + 1}/10

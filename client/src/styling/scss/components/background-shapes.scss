@@ -1,0 +1,46 @@
+@use "../utils/breakpoints.scss" as *;
+
+.moving-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+
+  &__item {
+    position: absolute;
+    width: 25vw;
+    aspect-ratio: 1/1;
+    background: linear-gradient(
+      45deg,
+      rgba(var(--PrussianBlue)),
+      rgba(var(--PrussianBlue), 0)
+    );
+    border-radius: 50%;
+    filter: blur(30px);
+
+    @include breakpoint(tablet) {
+      width: 50vw;
+    }
+
+    @include breakpoint(phone) {
+      width: 70vw;
+    }
+
+    &--one {
+      top: 20vh;
+      left: -10vw;
+
+      @include breakpoint(phone) {
+        top: 10vh;
+      }
+    }
+
+    &--two {
+      bottom: -10vh;
+      right: -2vw;
+    }
+  }
+}
