@@ -17,7 +17,7 @@ export default function Login() {
         "Content-Type": "application/json",
       },
       url: "http://localhost:5000/api/login",
-      data: { email, password },
+      data: { email: email, password: password },
     });
 
     if (user.data.status === "ok") {
