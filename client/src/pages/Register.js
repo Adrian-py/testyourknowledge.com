@@ -14,6 +14,7 @@ export default function Register() {
 
   const handleRegisterUser = async (event) => {
     event.preventDefault();
+
     const newUser = await axios.request({
       method: "POST",
       headers: {
@@ -47,6 +48,7 @@ export default function Register() {
             className="field__input"
             placeholder="Enter your username"
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
 
@@ -57,6 +59,7 @@ export default function Register() {
             className="field__input"
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
@@ -68,6 +71,7 @@ export default function Register() {
             className="field__input"
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 

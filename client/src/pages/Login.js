@@ -44,6 +44,7 @@ export default function Login() {
             className="field__input"
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
@@ -55,6 +56,7 @@ export default function Login() {
             className="field__input"
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 
