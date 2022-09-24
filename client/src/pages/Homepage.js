@@ -93,6 +93,7 @@ const useHomepage = () => {
     if (previousGameInfo) {
       setQuestionsList(previousGameInfo.questionsList);
       setNumOfCorrectAnswers(previousGameInfo.numOfCorrectAnswers);
+      setNumOfQuestionsAnswered(previousGameInfo.currentQuestionNumber + 2);
     }
   }, []);
 
