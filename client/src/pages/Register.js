@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigatePage = useNavigate();
+
   const handleRegisterUser = async (event) => {
     event.preventDefault();
-    return await axios
-      .request({
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        url: "http://localhost:5000/api/register",
-        data: { username, email, password },
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err.response.data));
+    const newUser = await axios.request({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:5000/api/register",
+      data: { username, email, password },
+    });
+
+    if (newUser.data.status === "error") {
+      alert("Register Failed! Email has been used.");
+      event.target.reset();
+      return;
+    }
+    navigatePage("/login");
   };
 
   return (

@@ -1,23 +1,43 @@
 import React, { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 
 import getQuestions from "../helper/getQuestions";
 
 import StartMenu from "../components/Homepage/StartMenu";
 import QuestionMenu from "../components/Homepage/QuestionMenu";
 import EndMenu from "../components/Homepage/EndMenu";
+import { useNavigate } from "react-router-dom";
 
 const useHomepage = () => {
   const [questionsList, setQuestions] = useState([]);
 
+  const navigatePage = useNavigate();
+
+  // Fetch trivia questions
   const fetchQuestions = async () => {
     return await getQuestions();
   };
 
+  // Check if user is logged in
   useEffect(() => {
-    fetchQuestions().then((returnedQuestions) => {
-      setQuestions(returnedQuestions);
-    });
-  }, []);
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const user = jwt_decode(token);
+
+      if (!user) {
+        localStorage.removeItem("token");
+        navigatePage("/login");
+      } else {
+        fetchQuestions().then((returnedQuestions) => {
+          setQuestions(returnedQuestions);
+        });
+      }
+    } else {
+      alert("You need to login first!");
+      navigatePage("/login");
+    }
+  }, [navigatePage]);
 
   return { questionsList };
 };
