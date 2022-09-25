@@ -10,14 +10,14 @@ To run this application on your desktop device, first clone the repository local
 
 After cloning it, to start the frontend side of the application type the following to the console:
 
-```console
+```bash
 cd client
 npm start
 ```
 
 To play with the styling of the app using SASS, a script is available for auto compiling SASS to CSS:
 
-```console
+```bash
 npm run sass
 ```
 
@@ -25,10 +25,12 @@ npm run sass
 
 To start the backend server, type the following to the console:
 
-```console
+```bash
 cd server
 npm run dev
 ```
+
+and to connect to the database, create a .env file containing an environment variable for the MongoDB URI.
 
 ## Technologies Used
 
